@@ -58,7 +58,7 @@ class PersonInfo(Toplevel):
         contacts = cur.execute("select * from 'phonebook'").fetchall() 
         totalcontact = 0
         for contact in contacts:
-            self.listBox.insert(totalcontact, str(contact[0])+" " +contact[1]+ " " +contact[2]+ " " +contact[3]+ " " +contact[4])
+            self.listBox.insert(totalcontact+ ". "+ str(contact[0])+" " +contact[1]+ " " +contact[2]+ " " +contact[3]+ " " +contact[4])
             totalcontact+=0
         print(contacts)
 
