@@ -1,10 +1,11 @@
 from tkinter import *
+from tkinter import messagebox
 from addcontacts import AddContacts
 import sqlite3
 
 
 conn = sqlite3.connect('phonebook.db')
-c = conn.cursor()
+cur = conn.cursor()
 
 class PhonebookApp(object):
     def __init__(self, master):
