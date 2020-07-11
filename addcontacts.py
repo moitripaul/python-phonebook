@@ -13,3 +13,27 @@ class AddContacts(Toplevel):
         self.bottom.pack(fill=X)
         self.heading = Label(self.top, text="Add person", font='Helvetica 20 bold', bg='white')
         self.heading.place(x=250, y =50)
+
+        #first name
+        self.first_name_label = Label(self.bottom, text="FirstName", font="Helvetica 20 bold", bg='white')
+        self.first_name_label.place(x=50, y=40)
+        self.first_name = Entry(self.bottom, width=30, bd=4)
+        self.first_name.place(x=200, y=40)
+
+        #last name
+        self.last_name_label = Label(self.bottom, text="LastName", font="Helvetica 20 bold", bg='white')
+        self.last_name_label.place(x=49, y=40)
+        self.last_name = Entry(self.bottom, width=30, bd=4)
+        self.last_name.place(x=200, y=120)
+
+        #phone number
+        self.phone_num_label = Label(self.bottom, text="PhoneNo", font="Helvetica 20 bold", bg='white')
+        self.phone_num_label.place(x=40, y=160)
+        self.phone_num = Entry(self.bottom, width=30, bd=4)
+        self.phone_num.place(x=200, y=160)
+
+        #address
+        self.address_label = Label(self.bottom, text="Address", font="Helvetica 20 bold", bg='white')
+        self.address_label.place(x=40, y=200)
+        self.address = Entry(self.bottom, width=30, bd=4)
+        self.address.place(x=200, y=200)
