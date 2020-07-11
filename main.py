@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from addcontacts import AddContacts
+from searchcontacts import SearchContacts
 import sqlite3
 
 
@@ -21,13 +22,19 @@ class PhonebookApp(object):
         # buttons for create, read, update, delete
         self.createBtn = Button(self.bottom, text="add contacts", command=self.createEntry )
         self.createBtn.place(x=210, y=70)
-        self.readBtn = Button(self.bottom, text="read contacts", command=self.readEntry )
+        self.readBtn = Button(self.bottom, text="search contacts", command=self.readEntry )
         self.readBtn.place(x=210, y=130)
+        self.viewAllBtn = Button(self.bottom, text="View all contacts", command=self.allEntries )
+        self.viewAllBtn.place(x=210, y=190)
 
-    def readEntry(self):
+    def allEntries(self):
         person = PersonInfo()
+        
     def createEntry(self):
         add_person = AddContacts()
+    
+    def readEntry(self):
+        search_person = SearchContacts()
 
 
 class PersonInfo(Toplevel):
@@ -40,10 +47,20 @@ class PersonInfo(Toplevel):
         self.top.pack(fill=X)
         self.bottom = Frame(self, height= 500, bg = 'gray')
         self.bottom.pack(fill=X)
-        self.scrollbar = Scrollbar(self.bottom, orient= VERTICAL)
-        self.scrollbar.grid(row=0, column=1, sticky=N+S)
-        self.listBox = Listbox(self.bottom, width=40, height = 27)
-        self.listBox.grid(row=0, column=0, padx=(40,0))     
+        self.heading = Label(self.top, text='All Contacts List', font='Helvetica 20 bold', bg='white')
+        self.heading.place(x=230, y= 25)
+        # self.scrollbar = Scrollbar(self.bottom, orient= VERTICAL)
+        # self.scrollbar.grid(row=0, column=1, sticky=N+S)
+        # self.listBox = Listbox(self.bottom, width=40, height = 27)
+        # self.listBox.grid(row=0, column=0, padx=(40,0))  
+        self.listBox = Listbox(self.bottom, width=100,  height = 27)
+        self.listBox.grid(row=0, column=0, padx=(20,0))  
+        contacts = cur.execute("select * from 'phonebook'").fetchall() 
+        totalcontact = 0
+        for contact in contacts:
+            self.listBox.insert(totalcontact, str(contact[0])+" " +contact[1]+ " " +contact[2]+ " " +contact[3]+ " " +contact[4])
+            totalcontact+=0
+        print(contacts)
 
 
 def main():
