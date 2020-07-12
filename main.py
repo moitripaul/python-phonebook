@@ -48,17 +48,13 @@ class PersonInfo(Toplevel):
         self.bottom = Frame(self, height= 500, bg = 'gray')
         self.bottom.pack(fill=X)
         self.heading = Label(self.top, text='All Contacts List', font='Helvetica 20 bold', bg='white')
-        self.heading.place(x=230, y= 25)
-        # self.scrollbar = Scrollbar(self.bottom, orient= VERTICAL)
-        # self.scrollbar.grid(row=0, column=1, sticky=N+S)
-        # self.listBox = Listbox(self.bottom, width=40, height = 27)
-        # self.listBox.grid(row=0, column=0, padx=(40,0))  
+        self.heading.place(x=230, y= 25) 
         self.listBox = Listbox(self.bottom, width=100,  height = 27)
         self.listBox.grid(row=0, column=0, padx=(20,0))  
         contacts = cur.execute("select * from 'phonebook'").fetchall() 
         totalcontact = 0
         for contact in contacts:
-            self.listBox.insert(totalcontact+ ". "+ str(contact[0])+" " +contact[1]+ " " +contact[2]+ " " +contact[3]+ " " +contact[4])
+            self.listBox.insert(totalcontact, ". "+ str(contact[0])+" " +contact[1]+ " " +contact[2]+ " " +contact[3]+ " " +contact[4])
             totalcontact+=0
         print(contacts)
 

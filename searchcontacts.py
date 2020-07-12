@@ -19,6 +19,8 @@ class SearchContacts(Toplevel):
         self.bottom.pack(fill=X)
         self.heading = Label(self.top, text="Search person", font='Helvetica 20 bold', bg='white')
         self.heading.place(x=250, y =50)
+        self.selectbtn = Label(self.bottom, text="Select person", font="Helvetica 20 bold", bg='white')
+        self.selectbtn.place(x=49, y=40)
 
       #   #first name
       #   self.first_name_label = Label(self.bottom, text="FirstName", font="Helvetica 20 bold", bg='white')
@@ -33,10 +35,10 @@ class SearchContacts(Toplevel):
       #   self.last_name.place(x=200, y=80)
 
         self.listBox = Listbox(self.bottom, width=100,  height = 27)
-        self.listBox.grid(row=0, column=0, padx=(20,0))  
+        self.listBox.grid(row=0, column=0, padx=(0,0))  
         #search contact
-        searchbtn = Button(self.bottom, text="Search", font="Helvetica 20 bold", bg='white', command = self.show_personinfo)
-        searchbtn.place(x=150, y=120)
+        searchbtn = Button(self.bottom, text="Select and Search", font="Helvetica 20 bold", bg='white', command = self.show_personinfo)
+        searchbtn.place(x=200, y=300)
 
         contacts = cur.execute("select * from 'phonebook'").fetchall() 
         totalcontact = 0

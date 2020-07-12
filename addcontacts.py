@@ -45,7 +45,7 @@ class AddContacts(Toplevel):
 
         #save contact
         savebtn = Button(self.bottom, text="Save", font="Helvetica 20 bold", bg='white', command=self.create_contact)
-        savebtn.place(x=150, y=240)
+        savebtn.place(x=300, y=300)
     
     def create_contact(self):
         fname = self.first_name.get()
